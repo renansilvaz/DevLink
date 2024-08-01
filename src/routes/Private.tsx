@@ -7,6 +7,7 @@ interface PrivateProps{
     children: ReactNode;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function Private({ children }: PrivateProps): any{
     const [loading, setLoading] = useState(true);
     const [signed, setSigned] = useState(false);
@@ -26,10 +27,15 @@ export function Private({ children }: PrivateProps): any{
 
             }else{
                 setLoading(false);
-                setSigned(true)
+                setSigned(false)
                 navigate("/login", {replace: true})
             }
         })
+
+        return () => {
+            unsub();
+        }
+
     }, [navigate])
 
     if(loading){

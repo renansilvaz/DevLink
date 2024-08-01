@@ -4,6 +4,7 @@ import { Home } from "./pages/home"
 import { Login } from "./pages/login" 
 import { Admin } from "./pages/admin" 
 import { Networks } from "./pages/networks" 
+import { ErrorPage } from "./pages/error"
 
 //Proteção de rota
 import { Private } from "./routes/Private"
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "admin/social",
     element: <Private><Networks/></Private>
+  },
+  {
+    path: "*",
+    element: <ErrorPage/>
   }
 ])
 
